@@ -18,17 +18,17 @@ The Stack class already has two attributes: the `stack` itself (an Array) and a 
 
 Add the following methods to the Stack class:
 
-### `push`
+### `push(item)`
 
 `push` adds an item to the top of the Stack. If the Stack is full, the item should not be pushed and an Error should be thrown.
 
 ### `pop`
 
-`pop` removes the item at the top of the Stack.
+`pop` removes the item at the top of the Stack and returns it. Don't worry if `pop` is called on an empty stack. It's OK for it to return the default return value, such as `undefined` or `nil`.
 
 ### `peek`
 
-`peek` returns the item at the top of the Stack without removing it.
+`peek` returns the item at the top of the Stack without removing it. If the Stack is empty, use the default return value, e.g. `undefined` or `nil`.
 
 ### `isEmpty`
 
