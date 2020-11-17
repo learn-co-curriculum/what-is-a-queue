@@ -11,7 +11,7 @@ class Stack {
     if (!this.isFull()) {
       this.stack.push(item);
     } else {
-      throw 'Stack is full!';
+      throw new Error('Stack is full!');
     }
   }
 
