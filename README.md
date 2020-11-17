@@ -10,7 +10,9 @@ We use stacks to solve certain algorithm problems. We also think of recursive pr
 
 ## Wait! This Sounds A Lot Like an Array!
 
-We can actually implement a stack class using an Array as the underlying data structure! Arrays provide all of the methods we need for the core functionality of a stack. Some of the methods we'll be adding to our Stack class include: `push`, `pop`, `peek`, `isEmpty`, and `print`. Do any of those sound familiar?
+We can actually implement a Stack class using an Array as the underlying data structure! Arrays provide all of the methods we need for the core functionality of a Stack. Some of the methods we'll be adding to our Stack class include: `push`, `pop`, `peek`, `isEmpty`, and `print`. Do any of those sound familiar?
+
+However, it's important to note that an Array doesn't have to be the underlying data structure. It could be another data structure, such as a Linked List (don't worry if you don't know what that is). When calculating Big O for a Stack, we always need to consider what the underlying data structure is since that'll affect our calculations.
 
 ## Implement the Stack Class
 
