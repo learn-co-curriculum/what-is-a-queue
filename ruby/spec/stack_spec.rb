@@ -1,4 +1,4 @@
-require '../solutions/stack.rb'
+require './stack.rb'
 
 class Stack
   attr_accessor :stack
