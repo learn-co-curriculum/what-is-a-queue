@@ -1,64 +1,60 @@
-# Day 1: Implement a Stack Class
+# Day 1: Implement a Queue Class
 
 **Fork and then clone me!**
 
-A stack is a data structure where items are processed in last-in-first-out order (LIFO). Similar to a stack of pancakes, where the last pancake placed on the stack is eaten first, the last item placed on the stack is removed and operated upon first. The last item on the stack is known as the **top**, and the first item that was pushed on the stack is known as the **base**. This means that the base is removed from the stack last.
+A queue is a data structure where items are processed in first-in-first-out order (FIFO). It has two ends: a front and a rear. The front is where items are dequeued from first, while items at the rear are handled last. Items are added to the rear of the queue until the queue is full. A queue operates a lot like a queue at the checkout of a grocery store. Customers join at the end of the line and are served at the front of the line.
 
-![pancake stack](./pancakes.png)
+![grocery queue](./grocery_store.jpg)
 
-We use stacks to solve certain algorithm problems. We also think of recursive problems in terms of a stack, since each recursive call results in a stack frame being added to the stack: those frames are then processed and removed in LIFO order! If you are tackling a problem and you see that it must be solved depth-first, this is a good clue that you'll either be using recursion or implementing a stack. Depth-first means that we go as deep as we can before we start processing data (LIFO order).
+We can implement a Queue class using an Array as the underlying data structure! Arrays provide all of the methods we need for the core functionality of a Queue. Some of the methods we'll be adding to our Queue class include: `enqueue`, `dequeue`, `peek`, `isEmpty`, and `print`.
 
-## Wait! This Sounds A Lot Like an Array!
+However, it's important to note that an Array doesn't have to be the underlying data structure. It could be another data structure, such as a Linked List (don't worry if you don't know what that is). When calculating Big O for a Queue, we always need to consider what the underlying data structure is since that'll affect our calculations.
 
-We can actually implement a Stack class using an Array as the underlying data structure! Arrays provide all of the methods we need for the core functionality of a Stack. Some of the methods we'll be adding to our Stack class include: `push`, `pop`, `peek`, `isEmpty`, and `print`. Do any of those sound familiar?
+## Implement the Queue Class
 
-However, it's important to note that an Array doesn't have to be the underlying data structure. It could be another data structure, such as a Linked List (don't worry if you don't know what that is). When calculating Big O for a Stack, we always need to consider what the underlying data structure is since that'll affect our calculations.
+The Queue class already has two attributes: the `queue` itself (an Array) and a `limit`, which is an Integer representing the total number of items allowed in the `queue` at one time.
 
-## Implement the Stack Class
+Add the following methods to the class:
 
-The Stack class already has two attributes: the `stack` itself (an Array) and a `limit`, which is an Integer representing the total number of items allowed in the Stack at one time.
+### `enqueue(item)`
 
-Add the following methods to the Stack class:
+`enqueue` adds an item to the back of the queue. If the queue is full, the item should not be pushed and an Error should be thrown.
 
-### `push(item)`
+### `dequeue`
 
-`push` adds an item to the top of the Stack. If the Stack is full, the item should not be pushed and an Error should be thrown.
-
-### `pop`
-
-`pop` removes the item at the top of the Stack and returns it. Don't worry if `pop` is called on an empty stack. It's OK for it to return the default return value, such as `undefined` or `nil`.
+`dequeue` removes the item at the front of the queue and returns it. Don't worry if `dequeue` is called on an empty queue. It's OK for it to return the default return value, such as `undefined` or `nil`.
 
 ### `peek`
 
-`peek` returns the item at the top of the Stack without removing it. If the Stack is empty, use the default return value, e.g. `undefined` or `nil`.
+`peek` returns the item at the front of the queue without removing it. If the queue is empty, use the default return value, e.g. `undefined` or `nil`.
 
 ### `isEmpty`
 
-`isEmpty` returns `true` if the Stack is empty, otherwise `false`.
+`isEmpty` returns `true` if the queue is empty, otherwise `false`.
 
 ### `isFull`
 
-`isFull` returns `true` if no more space is available in the Stack, otherwise `false`.
+`isFull` returns `true` if no more space is available in the queue, otherwise `false`.
 
 ### `size`
 
-`size` returns the number of items currently on the Stack.
+`size` returns the number of items currently in the queue.
 
 ### `search(target)`
 
-`search` returns an Integer representing how far the target item is from the top of the stack. If the item is not in the Stack, return `-1`. Example:
+`search` returns an Integer representing how far the target item is from the front of the queue. If the item is not in the queue, return `-1`. Example:
 
 ```
-// Stack = 1, 2, 3, 4, 5 <-top
+// queue = 1, 2, 3, 4, 5 <- rear
 
-stack.search(5) => 0
-stack.search(4) => 1
-stack.search(6) => -1
+queue.search(5) => 4
+queue.search(4) => 3
+queue.search(6) => -1
 ```
 
 ### `print`
 
-`print` prints the contents of the stack. It does not return them! You may print them however you wish.
+`print` prints the contents of the queue. It does not return them! You may print them however you wish.
 
 We've provided starter code for some languages. Choose whichever language you like. Once again, we recommend writing your own tests first and then running the test suites.
 

@@ -1,4 +1,4 @@
-class Stack
+class Queue
   attr_reader :limit
 
   def initialize

@@ -1,4 +1,4 @@
-class Stack {
+class Queue {
   constructor() {
     this.stack = [];
     // this is an arbitrary value to make testing easier
