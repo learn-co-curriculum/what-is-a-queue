@@ -1,4 +1,4 @@
-# Day 1: Implement a Queue Class
+# Day 3: Implement a Queue Class
 
 **Fork and then clone me!**
 
