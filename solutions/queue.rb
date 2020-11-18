@@ -2,109 +2,105 @@ class Queue
   attr_reader :limit
 
   def initialize
-    @stack = []
+    @queue = []
     # this is an arbitrary value to make testing easier
     # 1,024 would be way too high to test!
     @limit = 10
   end
 
-  # add item to top of stack if not full
+  # add item to rear of queue if not full
   # if full, throw error
-  def push(item)
-    raise 'Stack is full' if isFull?
+  def enqueue(item)
+    raise 'Queue is full' if isFull?
 
-    @stack.push(item)
+    @queue.push(item)
   end
 
-  # remove item from top of stack and return it
-  def pop
-    @stack.pop
+  # remove item from front of queue and return it
+  def dequeue
+    @queue.shift
   end
 
-  # return item at top of stack without removing it
+  # return item at front of queue without removing it
   def peek
-    @stack.last
+    @queue.first
   end
 
-  # return true if stack is empty, otherwise false
+  # return true if queue is empty, otherwise false
   def isEmpty?
     size.zero?
   end
 
-  # return true if stack is full, otherwise false
+  # return true if queue is full, otherwise false
   def isFull?
     size === @limit
   end
 
-  # return number of items in stack
+  # return number of items in queue
   def size
-    @stack.length
+    @queue.length
   end
 
-  # return -1 if item not in stack, otherwise integer representing 
-  # how far it is from the top
+  # return -1 if item not in queue, otherwise integer representing 
+  # how far it is from the front
   def search(target)
-    @stack.each_with_index do |item, idx|
-      return size - idx - 1 if item == target
-    end
-
-    -1
+    @queue.index(target) || -1
   end
 
-  # print contents of stack: do not return the stack itself!
+  # print contents of queue: do not return the queue itself!
   def print
-    puts @stack.join(' <- ')
+    puts @queue.join(' -> ')
   end
 end
 
 if __FILE__ == $PROGRAM_NAME
-  stack = Stack.new;
+  queue = Queue.new;
 
-  puts "'size': #{stack.size}"
-  puts "'is empty?': #{stack.isEmpty?}"
-  puts "'is full?': #{stack.isFull?}"
-  puts "'find 5': #{stack.search(5)}"
-  puts "'peek while empty': #{stack.peek}"
+  puts "'size': #{queue.size}"
+  puts "'is empty?': #{queue.isEmpty?}"
+  puts "'is full?': #{queue.isFull?}"
+  puts "'find 5': #{queue.search(5)}"
+  puts "'peek while empty': #{queue.peek}"
 
   (0...5).each do |num|
-    stack.push(num)
+    queue.enqueue(num)
   end
 
   puts "'ADD ITEMS 0 TO 4'"
-  puts "'size': #{stack.size}"
-  puts "'is empty?': #{stack.isEmpty?}"
-  puts "'is full?': #{stack.isFull?}"
-  puts "'find 3': #{stack.search(3)}"
-  puts "'peek': #{stack.peek}"
-  stack.print
+  puts "'size': #{queue.size}"
+  puts "'is empty?': #{queue.isEmpty?}"
+  puts "'is full?': #{queue.isFull?}"
+  puts "'find 3': #{queue.search(3)}"
+  puts "'peek': #{queue.peek}"
+  queue.print
 
   (5..9).each do |num|
-    stack.push(num)
+    queue.enqueue(num)
   end
 
   puts 'ADD ITEMS 5 TO 9'
-  puts "'size': #{stack.size}"
-  puts "'is empty?': #{stack.isEmpty?}"
-  puts "'is full?': #{stack.isFull?}"
-  puts "'find 3': #{stack.search(3)}"
-  puts "'peek': #{stack.peek}"
-  stack.print
+  puts "'size': #{queue.size}"
+  puts "'is empty?': #{queue.isEmpty?}"
+  puts "'is full?': #{queue.isFull?}"
+  puts "'find 3': #{queue.search(3)}"
+  puts "'peek': #{queue.peek}"
+  queue.print
 
-  puts "'pop': #{stack.pop}"
-  puts "'size': #{stack.size}"
-  puts "'is empty?': #{stack.isEmpty?}"
-  puts "'is full?': #{stack.isFull?}"
-  puts "'peek': #{stack.peek}"
-  stack.print
+  puts "'dequeue': #{queue.dequeue}"
+  puts "'size': #{queue.size}"
+  puts "'is empty?': #{queue.isEmpty?}"
+  puts "'is full?': #{queue.isFull?}"
+  puts "'peek': #{queue.peek}"
+  queue.print
 
   puts'GENERATE ERROR'
-  stack.push(9)
+  queue.enqueue(10)
 
   begin
-    stack.push(10)
+    queue.enqueue(11)
   rescue StandardError => e
     puts e.message
-    stack.print
+    queue.print
   end
 end
 

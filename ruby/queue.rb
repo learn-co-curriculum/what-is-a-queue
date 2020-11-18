@@ -8,16 +8,16 @@ class Queue
     @limit = 10
   end
 
-  # add item to top of queue if not full
+  # add item to rear of queue if not full
   # if full, throw error
-  def push(item)
+  def enqueue(item)
   end
 
-  # remove item from top of queue and return it
-  def pop
+  # remove item from front of queue and return it
+  def dequeue
   end
 
-  # return item at top of queue without removing it
+  # return item at front of queue without removing it
   def peek
   end
 
@@ -34,7 +34,7 @@ class Queue
   end
 
   # return -1 if item not in queue, otherwise integer representing 
-  # how far it is from the top
+  # how far it is from the front
   def search(target)
   end
 

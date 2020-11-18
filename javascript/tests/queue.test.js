@@ -31,35 +31,35 @@ test('isFull() returns true when the queue has 10 items', () => {
   expect(fullQueue.isFull()).toBe(true);
 });
 
-test('peek() returns the last item on the queue without removing it', () => {
-  expect(queueWithItems.peek()).toBe(5);
+test('peek() returns the frontmost item in the queue without removing it', () => {
+  expect(queueWithItems.peek()).toBe(1);
   expect(queueWithItems.size()).toBe(5);
 });
 
-test('pop() returns the last item on the queue and removes it', () => {
-  expect(queueWithItems.pop()).toBe(5);
+test('dequeue() returns the first item in the queue and removes it', () => {
+  expect(queueWithItems.dequeue()).toBe(1);
   expect(queueWithItems.size()).toBe(4);
-  queueWithItems.push(5);
+  queueWithItems.queue.unshift(1);
 });
 
-test('push() pushes an item onto the queue if it\'s not full', () => {
-  queueWithItems.push(6);
+test('enqueue() pushes an item onto the queue if it\'s not full', () => {
+  queueWithItems.enqueue(6);
 
   expect(queueWithItems.size()).toBe(6);
-  expect(queueWithItems.peek()).toBe(6);
-  queueWithItems.pop();
+  expect(queueWithItems.peek()).toBe(1);
+  queueWithItems.queue.pop();
 });
 
-test('push() throws an exception if the queue is full', () => {
+test('enqueue() throws an exception if the queue is full', () => {
   expect(() => {
-    fullQueue.push(10);
+    fullQueue.enqueue(10);
   }).toThrow(Error);
 });
 
-test('search() returns the distance between the top and the target element', () => {
-  expect(queueWithItems.search(5)).toBe(0);
-  expect(queueWithItems.search(4)).toBe(1);
-  expect(queueWithItems.search(1)).toBe(4);
+test('search() returns the distance between the front and the target element', () => {
+  expect(queueWithItems.search(5)).toBe(4);
+  expect(queueWithItems.search(4)).toBe(3);
+  expect(queueWithItems.search(1)).toBe(0);
 });
 
 test('search() returns -1 when the target is not in the queue', () => {

@@ -1,113 +1,107 @@
 class Queue {
   constructor() {
-    this.stack = [];
+    this.queue = [];
     // this is an arbitrary value to make testing easier
     // 1,024 would be way too high to test!
     this.limit = 10;
   }
 
-  // add item to top of stack if not full
-  push(item) {
+  // add item to rear of queue if not full
+  enqueue(item) {
     if (!this.isFull()) {
-      this.stack.push(item);
+      this.queue.push(item);
     } else {
-      throw new Error('Stack is full!');
+      throw new Error('Queue is full!');
     }
   }
 
-  // remove item from top of stack
-  pop() {
-    return this.stack.pop();
+  // remove item from front of queue
+  dequeue() {
+    return this.queue.shift();
   }
 
-  // return item at top of stack without removing it
+  // return item at front of queue without removing it
   peek() {
-    return this.stack[this.size() - 1];
+    return this.queue[0];
   }
 
-  // return true if stack is empty, otherwise false
+  // return true if queue is empty, otherwise false
   isEmpty() {
     return this.size() === 0;
   }
 
-  // return true if stack is full, otherwise false
+  // return true if queue is full, otherwise false
   isFull() {
     return this.size() === this.limit;
   }
 
-  // return number of items in stack
+  // return number of items in queue
   size() {
-    return this.stack.length;
+    return this.queue.length;
   }
 
-  // return -1 if item not in stack, otherwise integer representing 
-  // how far it is from the top
+  // return -1 if item not in queue, otherwise integer representing 
+  // how far it is from the front
   search(target) {
-    for (let i = -1; i >= -this.size(); --i) {
-      if (this.stack[this.size() + i] === target) {
-        return Math.abs(i) - 1;
-      }
-    }
-
-    return -1;
+    return this.queue.indexOf(target);
   }
 
-  // print contents of stack: do not return the stack itself!
+  // print contents of queue: do not return the queue itself!
   print() {
-    console.log(this.stack.join(' <- '));
+    console.log(this.queue.join(' -> '));
   }
 }
 
 if (require.main === module) {
   // add your own tests in here
-  const stack = new Stack();
+  const queue = new Queue();
 
-  console.log('size', stack.size());
-  console.log('is empty?', stack.isEmpty());
-  console.log('is full?', stack.isFull());
-  console.log('find 5', stack.search(5));
-  console.log('peek while empty', stack.peek());
+  console.log('size', queue.size());
+  console.log('is empty?', queue.isEmpty());
+  console.log('is full?', queue.isFull());
+  console.log('find 5', queue.search(5));
+  console.log('peek while empty', queue.peek());
 
   for (let i = 0; i < 5; ++i) {
-    stack.push(i);
+    queue.enqueue(i);
   }
 
   console.log('ADD ITEMS 0 TO 4');
-  console.log('size', stack.size());
-  console.log('is empty?', stack.isEmpty());
-  console.log('is full?', stack.isFull());
-  console.log('find 3', stack.search(3));
-  console.log('peek', stack.peek());
-  stack.print();
+  console.log('size', queue.size());
+  console.log('is empty?', queue.isEmpty());
+  console.log('is full?', queue.isFull());
+  console.log('find 3', queue.search(3));
+  console.log('peek', queue.peek());
+  queue.print();
 
   for (let i = 5; i < 10; ++i) {
-    stack.push(i);
+    queue.enqueue(i);
   }
 
   console.log('ADD ITEMS 5 TO 9');
-  console.log('size', stack.size());
-  console.log('is empty?', stack.isEmpty());
-  console.log('is full?', stack.isFull());
-  console.log('find 3', stack.search(3));
-  console.log('peek', stack.peek());
-  stack.print();
+  console.log('size', queue.size());
+  console.log('is empty?', queue.isEmpty());
+  console.log('is full?', queue.isFull());
+  console.log('find 3', queue.search(3));
+  console.log('peek', queue.peek());
+  queue.print();
 
-  console.log('pop', stack.pop());
-  console.log('size', stack.size());
-  console.log('is empty?', stack.isEmpty());
-  console.log('is full?', stack.isFull());
-  console.log('peek', stack.peek());
-  stack.print();
+  console.log('dequeue', queue.dequeue());
+  console.log('size', queue.size());
+  console.log('is empty?', queue.isEmpty());
+  console.log('is full?', queue.isFull());
+  console.log('peek', queue.peek());
+  queue.print();
 
   console.log('GENERATE ERROR');
-  stack.push(9);
+  queue.enqueue(10);
 
   try {
-    stack.push(10);
+    queue.enqueue(11);
   } catch(err) {
     console.log(err);
-    stack.print();
+    queue.print();
   }
 }
 
-module.exports = Stack;
+module.exports = Queue;

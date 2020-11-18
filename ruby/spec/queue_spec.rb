@@ -44,45 +44,46 @@ RSpec.describe 'Queue' do
   end
 
   context '#peek' do
-    it 'returns the last item on the queue without removing it' do
+    it 'returns the frontmost item in the queue without removing it' do
       queue.queue = [1, 2, 3]
 
-      expect(queue.peek).to eq(3)
+      expect(queue.peek).to eq(1)
       expect(queue.size).to eq(3)
     end
   end
 
-  context '#pop' do
-    it 'returns the last item on the queue and removes it' do
+  context '#dequeue' do
+    it 'returns the first item in the queue and removes it' do
       queue.queue = [1, 2, 3]
 
-      expect(queue.pop).to eq(3)
+      expect(queue.dequeue).to eq(1)
       expect(queue.size).to eq(2)
     end
   end
 
-  context '#push' do
+  context '#enqueue' do
     it 'pushes an item onto the queue if it\'s not full' do
-      queue.push(0)
+      queue.queue = [1, 2, 3]
+      queue.enqueue(0)
 
-      expect(queue.size).to eq(1)
-      expect(queue.peek).to eq(0)
+      expect(queue.size).to eq(4)
+      expect(queue.peek).to eq(1)
     end
 
     it 'throws an exception if the queue is full' do
       queue.queue = [0,1,2,3,4,5,6,7,8,9]
 
-      expect { queue.push(10) }.to raise_error
+      expect { queue.enqueue(10) }.to raise_error
     end
   end
 
   context '#search' do
-    it 'returns the distance between the top and the target element' do
+    it 'returns the distance between the front and the target element' do
       queue.queue = [1, 2, 3, 4, 5]
 
-      expect(queue.search(5)).to eq(0)
-      expect(queue.search(4)).to eq(1)
-      expect(queue.search(1)).to eq(4)
+      expect(queue.search(5)).to eq(4)
+      expect(queue.search(4)).to eq(3)
+      expect(queue.search(1)).to eq(0)
     end
 
     it 'returns -1 when the target is not in the queue' do
