@@ -44,12 +44,12 @@ Add the following methods to the class:
 
 `search` returns an Integer representing how far the target item is from the front of the queue. If the item is not in the queue, return `-1`. Example:
 
-```
+```js
 // queue = 1, 2, 3, 4, 5 <- rear
 
-queue.search(5) => 4
-queue.search(4) => 3
-queue.search(6) => -1
+queue.search(5); // => 4
+queue.search(4); // => 3
+queue.search(6); // => -1
 ```
 
 ### `print`
