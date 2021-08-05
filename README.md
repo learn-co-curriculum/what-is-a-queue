@@ -4,7 +4,7 @@
 
 A queue is a data structure where items are processed in first-in-first-out order (FIFO). It has two ends: a front and a rear. The front is where items are dequeued from first, while items at the rear are handled last. Items are added to the rear of the queue until the queue is full. A queue operates a lot like a queue at the checkout of a grocery store. Customers join at the end of the line and are served at the front of the line.
 
-![grocery queue](./grocery_store.jpg)
+![grocery queue](https://curriculum-content.s3.amazonaws.com/data-structures-and-algorithms/what-is-a-queue/grocery_store.jpg)
 
 We can implement a Queue class using an Array as the underlying data structure! Arrays provide all of the methods we need for the core functionality of a Queue. Some of the methods we'll be adding to our Queue class include: `enqueue`, `dequeue`, `peek`, `isEmpty`, and `print`.
 
