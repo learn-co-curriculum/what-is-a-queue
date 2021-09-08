@@ -1,32 +1,60 @@
 # Days 3-4: Implement a Queue Class
 
-**Fork and then clone me!**
+## Learning Goals
 
-A queue is a data structure where items are processed in first-in-first-out order (FIFO). It has two ends: a front and a rear. The front is where items are dequeued from first, while items at the rear are handled last. Items are added to the rear of the queue until the queue is full. A queue operates a lot like a queue at the checkout of a grocery store. Customers join at the end of the line and are served at the front of the line.
+- Define the characteristics of a queue
+- Implement a common methods of a queue class
+
+## Introduction
+
+A queue is a data structure where items are processed in first-in-first-out
+order (FIFO). It has two ends: a front and a rear. The front is where items are
+dequeued from first, while items at the rear are handled last. Items are added
+to the rear of the queue until the queue is full. A queue operates a lot like a
+queue at the checkout of a grocery store. Customers join at the end of the line
+and are served at the front of the line.
 
 ![grocery queue](https://curriculum-content.s3.amazonaws.com/data-structures-and-algorithms/what-is-a-queue/grocery_store.jpg)
 
-We can implement a Queue class using an Array as the underlying data structure! Arrays provide all of the methods we need for the core functionality of a Queue. Some of the methods we'll be adding to our Queue class include: `enqueue`, `dequeue`, `peek`, `isEmpty`, and `print`.
+We can implement a `Queue` class using an array as the underlying data structure!
+Arrays provide all of the methods we need for the core functionality of a queue.
+Some of the methods we'll be adding to our Queue class include: `enqueue`,
+`dequeue`, `peek`, `isEmpty`, and `print`.
 
-However, it's important to note that an Array doesn't have to be the underlying data structure. It could be another data structure, such as a Linked List (don't worry if you don't know what that is). When calculating Big O for a Queue, we always need to consider what the underlying data structure is since that'll affect our calculations.
+It's important to note that an array doesn't have to be the underlying data
+structure. It could be another data structure, such as a Linked List (we'll
+cover this data structure later).
+
+When calculating Big O for a queue, we always need to consider what the
+underlying data structure is since that'll affect our calculations.
 
 ## Implement the Queue Class
 
-The Queue class already has two attributes: the `queue` itself (an Array) and a `limit`, which is an Integer representing the total number of items allowed in the `queue` at one time.
+The `Queue` class already has two attributes: the `queue` itself (an array) and
+a `limit`, which is an integer representing the total number of items allowed in
+the `queue` at one time.
+
+We've provided starter code for some languages. Choose whichever language you
+like. Once again, we recommend writing your own tests first and then running the
+test suites.
 
 Add the following methods to the class:
 
 ### `enqueue(item)`
 
-`enqueue` adds an item to the back of the queue. If the queue is full, the item should not be pushed and an Error should be thrown.
+`enqueue` adds an item to the back of the queue. If the queue is full, the item
+should not be pushed and an Error should be thrown.
 
 ### `dequeue`
 
-`dequeue` removes the item at the front of the queue and returns it. Don't worry if `dequeue` is called on an empty queue. It's OK for it to return the default return value, such as `undefined` or `nil`.
+`dequeue` removes the item at the front of the queue and returns it. Don't worry
+if `dequeue` is called on an empty queue. It's OK for it to return the default
+return value, such as `undefined` or `nil`.
 
 ### `peek`
 
-`peek` returns the item at the front of the queue without removing it. If the queue is empty, use the default return value, e.g. `undefined` or `nil`.
+`peek` returns the item at the front of the queue without removing it. If the
+queue is empty, use the default return value, e.g. `undefined` or `nil`.
 
 ### `isEmpty`
 
@@ -42,7 +70,8 @@ Add the following methods to the class:
 
 ### `search(target)`
 
-`search` returns an Integer representing how far the target item is from the front of the queue. If the item is not in the queue, return `-1`. Example:
+`search` returns an integer representing how far the target item is from the
+front of the queue. If the item is not in the queue, return `-1`. Example:
 
 ```js
 // queue = 1, 2, 3, 4, 5 <- rear
@@ -54,9 +83,8 @@ queue.search(6); // => -1
 
 ### `print`
 
-`print` prints the contents of the queue. It does not return them! You may print them however you wish.
-
-We've provided starter code for some languages. Choose whichever language you like. Once again, we recommend writing your own tests first and then running the test suites.
+`print` prints the contents of the queue. It does not return them! You may print
+them however you wish.
 
 ## How to run your own tests
 
